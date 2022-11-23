@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="weights"         default="yolov5s-seg.pt"/>
+    <arg name="source"          default="/camera/color/image_raw"/>
+    <arg name="data"            default="data/coco128.yaml"/>
+    <arg name="imgsz"           default="640"/>
+    <arg name="conf_thres"      default="0.25"/>
+    <arg name="iou_thres"       default="0.45"/>
+    <arg name="max_det"         default="1000"/>
+    <arg name="device"          default="0"/>
+    <arg name="view_img"        default="false"/>
+    <arg name="agnostic_nms"    default="false"/>
+    <arg name="augment"         default="false"/>
+    <arg name="visualize"       default="false"/>
+    <arg name="update"          default="false"/>
+    <arg name="line_thickness"  default="3"/>
+    <arg name="hide_labels"     default="false"/>
+    <arg name="hide_conf"       default="false"/>
+    <arg name="half"            default="false"/>
+    <arg name="dnn"             default="false"/>
+    <arg name="retina_masks"    default="false"/>
+
+    <param name="/yolov5/weights"           value="$(arg weights)"          type="str"/>
+    <param name="/yolov5/source"            value="$(arg source)"           type="str"/>
+    <param name="/yolov5/data"              value="$(arg data)"             type="str"/>
+    <param name="/yolov5/imgsz"             value="$(arg imgsz)"            type="int"/>
+    <param name="/yolov5/conf_thres"        value="$(arg conf_thres)"       type="double"/>
+    <param name="/yolov5/iou_thres"         value="$(arg iou_thres)"        type="double"/>
+    <param name="/yolov5/max_det"           value="$(arg max_det)"          type="int"/>
+    <param name="/yolov5/device"            value="$(arg device)"           type="int"/>
+    <param name="/yolov5/view_img"          value="$(arg view_img)"         type="bool"/>
+    <param name="/yolov5/agnostic_nms"      value="$(arg agnostic_nms)"     type="bool"/>
+    <param name="/yolov5/augment"           value="$(arg augment)"          type="bool"/>
+    <param name="/yolov5/visualize"         value="$(arg visualize)"        type="bool"/>
+    <param name="/yolov5/update"            value="$(arg update)"           type="bool"/>
+    <param name="/yolov5/line_thickness"    value="$(arg line_thickness)"   type="int"/>
+    <param name="/yolov5/hide_labels"       value="$(arg hide_labels)"      type="bool"/>
+    <param name="/yolov5/hide_conf"         value="$(arg hide_conf)"        type="bool"/>
+    <param name="/yolov5/half"              value="$(arg half)"             type="bool"/>
+    <param name="/yolov5/dnn"               value="$(arg dnn)"              type="bool"/>
+    <param name="/yolov5/retina_masks"      value="$(arg retina_masks)"     type="bool"/>
+    
+    <node pkg="yolov5" type="predict-ros.py" name="predict"  output="screen" respawn="false"/>
+</launch>

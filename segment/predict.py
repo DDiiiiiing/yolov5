@@ -127,7 +127,6 @@ def run(
         with dt[1]:
             visualize = increment_path(save_dir / Path(path).stem, mkdir=True) if visualize else False
             pred, proto = model(im, augment=augment, visualize=visualize)[:2]
-
         # NMS
         with dt[2]:
             pred = non_max_suppression(pred, conf_thres, iou_thres, classes, agnostic_nms, max_det=max_det, nm=32)
@@ -265,9 +264,8 @@ def parse_opt():
 
 
 def main(opt):
-    check_requirements(exclude=('tensorboard', 'thop'))
+    check_requirements(exclude=('tensorboard', 'thop', 'opencv-python'))
     run(**vars(opt))
-
 
 if __name__ == "__main__":
     opt = parse_opt()

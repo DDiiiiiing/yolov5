@@ -37,7 +37,8 @@ class ComputeLoss:
         self.na = m.na  # number of anchors
         self.nc = m.nc  # number of classes
         self.nl = m.nl  # number of layers
-        self.nm = m.nm  # number of masks
+        # self.nm = m.nm  # number of masks
+        self.nm = 32
         self.anchors = m.anchors
         self.device = device
 

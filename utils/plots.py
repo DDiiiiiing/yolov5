@@ -156,10 +156,7 @@ class Annotator:
             im_gpu = im_gpu * inv_alph_masks[-1] + mcs
             im_mask = (im_gpu * 255).byte().cpu().numpy()
             self.im[:] = scale_image(im_gpu.shape, im_mask, self.im.shape)
-        if self.pil:
-            # convert im back to PIL and update draw
-            self.fromarray(self.im)
-
+        if self.pil:scale_image
     def rectangle(self, xy, fill=None, outline=None, width=1):
         # Add rectangle to image (PIL-only)
         self.draw.rectangle(xy, fill, outline, width)
