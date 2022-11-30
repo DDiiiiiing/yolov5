@@ -132,7 +132,10 @@ def run(
     if type(imgsz)==int:
         imgsz = (imgsz, imgsz)
     classes=None  # filter by class: --class 0, or --class 0 2 3
-    print("wei", weights)
+    if weights=="fake":
+        weights="/home/capstone/catkin_yolo/src/yolov5/runs/train-seg/fake-640-no-aug/weights/best.pt"
+    elif weights=="real":
+        weights="/home/capstone/catkin_yolo/src/yolov5/runs/train-seg/real-640-no-aug/weights/best.pt"
     
     # Load model
     device = select_device(device)
