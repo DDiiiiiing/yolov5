@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-    <arg name="weights"         default="yolov5s-seg.pt"/>
+    <arg name="weights"         default="fake"/>
     <arg name="source"          default="/camera/color/image_raw"/>
     <arg name="data"            default="data/coco128.yaml"/>
     <arg name="imgsz"           default="640"/>
